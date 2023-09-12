@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Doble Nueve</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='domino.png') }}">
+
+</head>
+
+<header> Doble Nueve </header>
+<body>
+    <div> 
+        <form action="{{ url_for('initial') }}" method="post">
+            <h2>Cuantos jugadores?</h2>
+            <input type="number" name="qty"/>
+        </br>
+            <button type="submit">Siguiente</button>
+        </form>
+    </div>    
+</body>
+
+</html>
