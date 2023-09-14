@@ -8,24 +8,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='style.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='domino.png') }}">
-
 </head>
-
-<header> Doble Nueve </header>
+<div class="index">
+<header class = "Header">
+    <h1>
+        <img class="Logo" src="{{ url_for('static', filename='domino.png') }}">
+        Doble Nueve
+    </h1>  
+</header>
 <body>
-    <div> 
+    <div class = "Intro"> 
         <form action="{{ url_for('index') }}" method="post">
-            <h2>{{game_stage}}</h2>
-
             {% for x in range(1,qty+1) %}
                 <label>
-                    <h2> Jugador {{x}}:</h2> 
-                    <input type="text" name="jugadores"/>
+                    <h2 class = "Headers"> Jugador {{x}}:</h2> 
+                    <input class = "Inputs" type="text" name="jugadores"/>
                 </label>
             {% endfor %}
-            <button type="submit">Siguiente</button>
+            </br>
+            <button class = "Submit" type="submit">Siguiente</button>
         </form>
     </div>    
 </body>
-
+</div>
 </html>

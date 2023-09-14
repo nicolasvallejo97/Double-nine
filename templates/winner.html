@@ -10,34 +10,40 @@
     <link rel="shortcut icon" href="{{ url_for('static', filename='domino.png') }}">
 
 </head>
+<header class = "Header">
+    <h1>
+        <img class="Logo" src="{{ url_for('static', filename='domino.png') }}">
+        Doble Nueve
+    </h1> 
+</header>
+<div class = "Game-actual">
+    <h1>EL GANADOR ES: {{ganador}}</h1>
+</div>
 
-<header> Doble Nueve </header>
 <body>
-    <div class="container">
-        <h1>{{game_stage}}</h1>
-        <h1>EL GANADOR ES: {{ganador}}</1>
-        <div class="table-1">
-            <form action="{{ url_for('winner') }}" method="post">
-            <table>
-                <tbody>
-                        <tr>
-                            <th>Jugador</th>
-                            <th>Puntos totales</th>
-                        </tr>
-
-                        {% for jugador in jugadores %}
-                        <tr>
-                            <td data-th="Block" name = "jugadores">{{jugador.name}}</td>
-                            <td data-th="Block" name = "puntos">{{jugador.total}}</td>
-                        </tr>
-                        {% endfor %}
-                </tbody>
-            </table>
-            <button type="submit">Bye</button>
-            </form>
-            
-        </div>
+    <div class = "Intro">
+    <form action="{{ url_for('winner') }}" method="post">
+        <table class="Styled-table">
+            <thead>
+                <tr>
+                    <th>Jugador</th>
+                    <th>Puntos totales</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for jugador in jugadores %}
+                <tr>
+                    <td name = "jugadores">{{jugador.name}}</td>
+                    <td name = "puntos">{{jugador.total}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
+        <div class = "Intro">
+            <button class = "Submit" type="submit">Jugar de nuevo</button>
+        </div>
+    </form>
 
 
 

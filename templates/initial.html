@@ -11,14 +11,22 @@
 
 </head>
 
-<header> Doble Nueve </header>
+<header class = "Header">
+    <h1>
+        <img class="Logo" src="{{ url_for('static', filename='domino.png') }}">
+        Doble Nueve
+    </h1>  
+</header>
+
 <body>
-    <div> 
+    <div class="Intro"> 
         <form action="{{ url_for('initial') }}" method="post">
-            <h2>Cuantos jugadores?</h2>
-            <input type="number" name="qty"/>
-        </br>
-            <button type="submit">Siguiente</button>
+            <h2 class = "Headers">Cuantos jugadores?</h2>
+            <input class="Inputs" type="number" name="qty"/>
+    </div>
+    <div class = "Intro">
+        <button class = "Submit" type="submit">Siguiente</button>
+    </div>    
         </form>
     </div>    
 </body>

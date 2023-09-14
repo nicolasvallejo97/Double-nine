@@ -8,112 +8,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='style.css') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='domino.png') }}">
-
 </head>
-
-<header> Doble Nueve </header>
-<body>
-    <div class="container">
-        <h1>{{game_stage}}</h1>
-        <div class="table-1">
-            <form action="{{ url_for('gameindex') }}" method="post">
-            <table>
-                <tbody>
-                        <tr>
-                            <th>Jugador</th>
-                            <th>Doble 9</th>
-                            <th>Doble 8</th>
-                            <th>Doble 7</th>
-                            <th>Doble 6</th>
-                            <th>Doble 5</th>
-                            <th>Doble 4</th>
-                            <th>Doble 3</th>
-                            <th>Doble 2</th>
-                            <th>Doble 1</th>
-                            <th>Doble 0</th>
-                        </tr>
-
-                        {% for jugador in jugadores %}
-                        <tr>
-                            <td data-th="Block" name = "jugadores">{{jugador.name}}</td>
-                            {% if game_stage == "doble9" %}
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble8"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble7"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble6"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble5"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element">{{jugador.doble6}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble4"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element">{{jugador.doble6}}</td>
-                            <td data-th="Element">{{jugador.doble5}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble3"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element">{{jugador.doble6}}</td>
-                            <td data-th="Element">{{jugador.doble5}}</td>
-                            <td data-th="Element">{{jugador.doble4}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble2"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element">{{jugador.doble6}}</td>
-                            <td data-th="Element">{{jugador.doble5}}</td>
-                            <td data-th="Element">{{jugador.doble4}}</td>
-                            <td data-th="Element">{{jugador.doble3}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble1"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element">{{jugador.doble6}}</td>
-                            <td data-th="Element">{{jugador.doble5}}</td>
-                            <td data-th="Element">{{jugador.doble4}}</td>
-                            <td data-th="Element">{{jugador.doble3}}</td>
-                            <td data-th="Element">{{jugador.doble2}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {% elif game_stage == "doble0"  %}
-                            <td data-th="Element">{{jugador.doble9}}</td>
-                            <td data-th="Element">{{jugador.doble8}}</td>
-                            <td data-th="Element">{{jugador.doble7}}</td>
-                            <td data-th="Element">{{jugador.doble6}}</td>
-                            <td data-th="Element">{{jugador.doble5}}</td>
-                            <td data-th="Element">{{jugador.doble4}}</td>
-                            <td data-th="Element">{{jugador.doble3}}</td>
-                            <td data-th="Element">{{jugador.doble2}}</td>
-                            <td data-th="Element">{{jugador.doble1}}</td>
-                            <td data-th="Element"><input type="number" value="0" name="points"/></td>
-                            {%endif%}
-                        </tr>
-                        {% endfor %}
-                </tbody>
-            </table>
-            <button type="submit">Siguiente</button>
-            </form>
-        </div>
+<div>
+<header class = "Header">
+    <div>
+    <h1>
+        <img class="Logo" src="{{ url_for('static', filename='domino.png') }}"></img>
+        Doble Nueve</h1>
     </div>
+    <div class = "Game-actual">
+        <h1>Mano actual: {{game_stage}}</h1>
+    </div>
+</header>
+</div>
 
-
-
-
+<body>
+    <form action="{{ url_for('gameindex') }}" method="post">
+        <div class = "Intro">
+        <table class = "Styled-table">
+            <thead>
+                <tr>
+                <th>Jugador</th>
+                {%  for jugador in jugadores %}
+                <th name = "jugadores">{{jugador.name}}</th>
+                {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Doble 9</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble9" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble9}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 8</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble8" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble8}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 7</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble7" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble7}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 6</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble6" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble6}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 5</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble5" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble5}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 4</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble4" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble4}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 3</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble3" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble3}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 2</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble2" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble2}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 1</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble1" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble1}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+                <tr>
+                    <td>Doble 0</td>
+                    {% for jugador in jugadores %}
+                    {% if game_stage == "doble0" %}
+                    <td><input class = "Inputs-number" type="number" value="0" name="points"/></td>
+                    {% else %}
+                    <td>{{jugador.doble0}}</td>
+                    {% endif %}
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+        </div> 
+        <div class = "Intro">
+        <button class = "Submit" type="submit">Siguiente</button>
+        </div>
+    </form>
 </body>
+
 
 </html>
